@@ -1,6 +1,5 @@
 plugins {
     alias(libs.plugins.kotlin)
-    alias(libs.plugins.ktor)
 }
 
 group = "xyz.krylex"
