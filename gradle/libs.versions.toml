@@ -1,0 +1,24 @@
+[versions]
+kotlin = "1.8.21"
+ktor = "2.3.1"
+jsoup = "1.16.1"
+logback = "1.4.7"
+
+[plugins]
+kotlin = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
+ktor = { id = "io.ktor.plugin", version.ref = "ktor" }
+
+[libraries]
+kotlin-junit = { module = "org.jetbrains.kotlin:kotlin-test-junit", version.ref = "kotlin" }
+
+ktor-client-core = { module = "io.ktor:ktor-client", version.ref = "ktor" }
+ktor-client-tests = { module = "io.ktor:ktor-client-tests-jvm", version.ref = "ktor" }
+ktor-client-mock = { module = "io.ktor:ktor-client-mock-jvm", version.ref = "ktor" }
+
+jsoup = { module = "org.jsoup:jsoup", version.ref = "jsoup" }
+
+logback = { module = "ch.qos.logback:logback-classic", version.ref = "logback" }
+
+[bundles]
+ktor = ["ktor-client-core"]
+ktor-tests = ["ktor-client-tests", "ktor-client-mock"]
