@@ -11,7 +11,7 @@ repositories {
 }
 
 dependencies {
-    implementation(libs.jsoup)
+    api(libs.jsoup)
     implementation(libs.bundles.ktor)
     implementation(libs.logback)
 
