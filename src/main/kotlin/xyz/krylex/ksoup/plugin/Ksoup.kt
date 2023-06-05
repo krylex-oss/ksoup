@@ -40,7 +40,7 @@ class Ksoup private constructor(private val config: Config) {
                 }
 
                 val document = context.response.document(plugin.config.parsers())
-                proceedWith(subject.copy(response = document))
+                proceedWith(HttpResponseContainer(typeInfo, document))
             }
         }
     }
