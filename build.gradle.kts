@@ -15,5 +15,5 @@ dependencies {
     implementation(libs.logback)
 
     testImplementation(libs.bundles.ktor.tests)
-    testImplementation(libs.kotlin.junit)
+    testImplementation(libs.jupiter)
 }

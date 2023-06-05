@@ -3,20 +3,21 @@ kotlin = "1.8.21"
 ktor = "2.3.1"
 jsoup = "1.16.1"
 logback = "1.4.7"
+jupiter = "5.9.3"
 
 [plugins]
 kotlin = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
 
 [libraries]
-kotlin-junit = { module = "org.jetbrains.kotlin:kotlin-test-junit", version.ref = "kotlin" }
-
-ktor-client-core = { module = "io.ktor:ktor-client", version.ref = "ktor" }
+ktor-client-core = { module = "io.ktor:ktor-client-core-jvm", version.ref = "ktor" }
 ktor-client-tests = { module = "io.ktor:ktor-client-tests-jvm", version.ref = "ktor" }
 ktor-client-mock = { module = "io.ktor:ktor-client-mock-jvm", version.ref = "ktor" }
 
 jsoup = { module = "org.jsoup:jsoup", version.ref = "jsoup" }
 
 logback = { module = "ch.qos.logback:logback-classic", version.ref = "logback" }
+
+jupiter = { module = "org.junit.jupiter:junit-jupiter", version.ref = "jupiter" }
 
 [bundles]
 ktor = ["ktor-client-core"]
