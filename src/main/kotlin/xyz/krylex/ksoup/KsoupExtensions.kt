@@ -18,11 +18,9 @@ private fun ContentType?.matchParser(parsers: Parsers): Parser? =
         else -> null
     }
 
-suspend fun HttpResponse.documentOrNull(parsers: Parsers = emptyMap()): Document? {
-    val parser = contentType().matchParser(parsers)
-
-    return parser?.parseInput(bodyAsText(), request.url.toString())
-}
+suspend fun HttpResponse.documentOrNull(parsers: Parsers = emptyMap()): Document? =
+    contentType().matchParser(parsers)?.newInstance()
+        ?.parseInput(bodyAsText(), request.url.toString())
 
 suspend fun HttpResponse.document(parsers: Parsers = emptyMap()): Document =
     documentOrNull(parsers) ?: throw BadContentTypeException(contentType())
