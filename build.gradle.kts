@@ -17,3 +17,12 @@ dependencies {
     testImplementation(libs.bundles.ktor.tests)
     testImplementation(libs.jupiter)
 }
+
+tasks {
+    test {
+        useJUnitPlatform()
+        testLogging {
+            events(TestLogEvent.FAILED, TestLogEvent.SKIPPED, TestLogEvent.PASSED)
+        }
+    }
+}
