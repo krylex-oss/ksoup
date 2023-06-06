@@ -2,6 +2,7 @@ import org.gradle.api.tasks.testing.logging.TestLogEvent
 
 plugins {
     alias(libs.plugins.kotlin)
+    `maven-publish`
 }
 
 group = "xyz.krylex"
@@ -9,6 +10,7 @@ version = "1.0.0"
 
 repositories {
     mavenCentral()
+    maven { url = uri("https://jitpack.io") }
 }
 
 dependencies {
@@ -25,6 +27,29 @@ tasks {
         useJUnitPlatform()
         testLogging {
             events(TestLogEvent.FAILED, TestLogEvent.SKIPPED, TestLogEvent.PASSED)
+        }
+    }
+}
+
+java {
+    withJavadocJar()
+    withSourcesJar()
+}
+
+publishing {
+    repositories {
+        maven {
+            name = "krylexReleases"
+            url = uri("https://repository.krylex.xyz/releases")
+            credentials {
+                username = System.getenv("KRYLEX_REPOSITORY_USERNAME")
+                password = System.getenv("KRYLEX_REPOSITORY_PASSWORD")
+            }
+        }
+    }
+    publications {
+        register<MavenPublication>("release") {
+            from(components["java"])
         }
     }
 }
