@@ -28,5 +28,8 @@ jobs:
 
       - name: Build and publish
         uses: gradle/gradle-build-action@v2
+        env:
+          KRYLEX_REPOSITORY_USERNAME: ${{ secrets.KRYLEX_REPOSITORY_USERNAME }}
+          KRYLEX_REPOSITORY_PASSWORD: ${{ secrets.KRYLEX_REPOSITORY_PASSWORD }}
         with:
           arguments: publish
