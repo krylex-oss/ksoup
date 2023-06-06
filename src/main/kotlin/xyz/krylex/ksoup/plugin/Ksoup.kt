@@ -11,6 +11,31 @@ import org.jsoup.parser.Parser
 import xyz.krylex.ksoup.Parsers
 import xyz.krylex.ksoup.document
 
+/**
+ * A Ktor client plugin that provides support to
+ * parse response bodies into [Document].
+ *
+ * Sample usage:
+ * ```
+ * val client = HttpClient(CIO) {
+ *     install(Ksoup)
+ * }
+ * val document: Document = client.get("https://example.com/doc.html").body()
+ * ```
+ *
+ * By default, parses only [ContentType.Text.Html], [ContentType.Text.Xml],
+ * [ContentType.Application.Xml] and [ContentType.Application.Rss].
+ *
+ * It is possible to register additional content types with [Ksoup.Config.parser]:
+ *
+ * ```
+ * val client = HttpClient(CIO) {
+ *     install(Ksoup) {
+ *         parser(ContentType.Text.Plaint, Parsers.htmlParser())
+ *     }
+ * }
+ * ```
+ */
 class Ksoup private constructor(private val config: Config) {
     /**
      * A [Ksoup] configuration that is used during installation.
@@ -23,17 +48,44 @@ class Ksoup private constructor(private val config: Config) {
             ContentType.Application.Rss to Parser.xmlParser()
         )
 
+        /**
+         * Register a [Parser] for the specified [ContentType].
+         *
+         * @param contentType the content type to register
+         * @param parser the instance of [Parser] to be registered
+         */
         fun parser(contentType: ContentType, parser: Parser) {
             parsers[contentType] = parser
         }
 
+        /**
+         * Register a [Parser] for the specified [ContentType].
+         *
+         * @param contentType the content type to register
+         * @param block a lambda function that creates the instance
+         * of [Parser]
+         */
         fun parser(contentType: ContentType, block: () -> Parser) {
             parsers[contentType] = block()
         }
 
+        /**
+         * Get a [Parsers] containing all registered parsers for content types.
+         *
+         * Default included parsers:
+         * - [ContentType.Text.Html]
+         * - [ContentType.Text.Xml]
+         * - [ContentType.Application.Xml]
+         * - [ContentType.Application.Rss]
+         *
+         * @return immutable [Parsers] with all registered parsers for content types.
+         */
         fun parsers(): Parsers = parsers.toMap()
     }
 
+    /**
+     * A companion object used to install a plugin.
+     */
     @KtorDsl
     companion object KsoupPlugin : HttpClientPlugin<Config, Ksoup> {
         override val key: AttributeKey<Ksoup> = AttributeKey("Ksoup")
