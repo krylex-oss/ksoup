@@ -7,8 +7,6 @@ on:
 
 jobs:
   publish:
-    if: "! contains(toJSON(github.event.commits.*.message), '[no ci]')"
-
     runs-on: ubuntu-latest
 
     env:
