@@ -12,8 +12,16 @@ import xyz.krylex.ksoup.Parsers
 import xyz.krylex.ksoup.document
 
 class Ksoup private constructor(private val config: Config) {
+    /**
+     * A [Ksoup] configuration that is used during installation.
+     */
     class Config {
-        private val parsers: MutableMap<ContentType, Parser> = hashMapOf()
+        private val parsers: MutableMap<ContentType, Parser> = hashMapOf(
+            ContentType.Text.Html to Parser.htmlParser(),
+            ContentType.Text.Xml to Parser.xmlParser(),
+            ContentType.Application.Xml to Parser.xmlParser(),
+            ContentType.Application.Rss to Parser.xmlParser()
+        )
 
         fun parser(contentType: ContentType, parser: Parser) {
             parsers[contentType] = parser
@@ -26,6 +34,7 @@ class Ksoup private constructor(private val config: Config) {
         fun parsers(): Parsers = parsers.toMap()
     }
 
+    @KtorDsl
     companion object KsoupPlugin : HttpClientPlugin<Config, Ksoup> {
         override val key: AttributeKey<Ksoup> = AttributeKey("Ksoup")
 
