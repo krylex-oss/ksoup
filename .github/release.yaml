@@ -1,0 +1,23 @@
+changelog:
+  exclude:
+    lables:
+      - ci
+      - duplicate
+      - invalid
+      - question
+      - wontfix
+      - documentation
+  categories:
+    - title: New features
+      labels:
+        - feature
+    - title: Refactoring / Performance
+      labels:
+        - refactor
+        - performance
+    - title: Dependencies
+      labels:
+        - dependencies
+    - title: Javadoc / KDoc
+      labels:
+        - javadoc
