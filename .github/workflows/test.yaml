@@ -1,6 +1,6 @@
 name: Test
 
-on: [push, pull_request]
+on: [pull_request]
 
 jobs:
   test:
@@ -20,7 +20,7 @@ jobs:
           java-version: 17
           cache: gradle
 
-      - name: Setup Gradle and run tests
+      - name: Run tests
         uses: gradle/gradle-build-action@v2
         with:
           arguments: test
