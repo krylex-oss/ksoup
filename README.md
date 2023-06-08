@@ -76,7 +76,5 @@ val document: Document? = client.getDocumentOrNull(url)
 
 ## TODO
 
-- [ ] Support for transforming nullable reified types
-- [ ] Add more tests
 - [ ] Documentation generation with Dokka
 - [ ] Documentation deploying to GitHub Pages
