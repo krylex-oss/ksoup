@@ -39,7 +39,7 @@ repositories {
 
 ```kotlin
 dependencies {
-    implementation("xyz.krylex:ksoup:1.0.0")
+    implementation("xyz.krylex:ksoup:1.1.0")
 }
 ```
 
