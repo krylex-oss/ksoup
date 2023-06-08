@@ -4,7 +4,7 @@ on: [pull_request]
 
 jobs:
   test:
-    if: "! startsWith(toJSON(github.event.commits.*.message), 'ci.*:')"
+    if: "! startsWith(toJSON(github.event.commits.*.message), '(ci|docs).*:')"
     runs-on: ubuntu-latest
 
     env:
