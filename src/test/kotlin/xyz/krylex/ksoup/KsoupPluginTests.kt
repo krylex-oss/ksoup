@@ -59,28 +59,28 @@ class KsoupPluginTests {
         contentType: ContentType, block: Document.() -> Unit = {}
     ) {
         val client = mockClient.default()
-        runBlocking {
-            val document = client.getDocument(constructUrl(contentType))
-            block(document)
+        val document = runBlocking {
+            client.getDocument(constructUrl(contentType))
         }
+        block(document)
     }
 
     @Test
-    fun `test html parsing by default`() {
+    fun `test client should parse html`() {
         requestSampleDocument(ContentType.Text.Html) {
             assertEquals("Hello from html", head().text())
         }
     }
 
     @Test
-    fun `test xml parsing by default`() {
+    fun `test client should parse xml`() {
         requestSampleDocument(ContentType.Text.Xml) {
             assertEquals("Hello from xml", text())
         }
     }
 
     @Test
-    fun `test rss parsing by default`() {
+    fun `test client should parse rss`() {
         requestSampleDocument(ContentType.Application.Rss) {
             assertEquals(
                 "Hello from rss",
@@ -90,7 +90,7 @@ class KsoupPluginTests {
     }
 
     @Test
-    fun `test should throw on missing content type with getDocument`() {
+    fun `test getDocument should throw exception on missing content type`() {
         assertThrows<BadContentTypeException> {
             requestSampleDocument(ContentType.Text.Plain)
         }
@@ -119,7 +119,7 @@ class KsoupPluginTests {
     }
 
     @Test
-    fun `test should return null on missing content type with getDocumentOrNull`() {
+    fun `test getDocumentOrNull should return null on missing content type`() {
         val client = mockClient.default()
         assertDoesNotThrow {
             runBlocking {
@@ -129,16 +129,15 @@ class KsoupPluginTests {
     }
 
     @Test
-    fun `test configured content type should parse document`() {
+    fun `test client should parse document with additional content type parser`() {
         val client = mockClient.config {
             ksoup {
                 parser(ContentType.Text.Plain, Parser.htmlParser())
             }
         }
-        runBlocking {
-            val document: Document = client.get(constructUrl(ContentType.Text.Plain))
-                .body()
-            assertEquals("Hello from html", document.head().text())
+        val document: Document = runBlocking {
+             client.get(constructUrl(ContentType.Text.Plain)).body()
         }
+        assertEquals("Hello from html", document.head().text())
     }
 }
