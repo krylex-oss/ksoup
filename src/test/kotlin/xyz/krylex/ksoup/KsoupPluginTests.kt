@@ -15,6 +15,7 @@ import org.junit.jupiter.api.assertDoesNotThrow
 import org.junit.jupiter.api.assertThrows
 import xyz.krylex.ksoup.exception.BadContentTypeException
 import kotlin.test.assertEquals
+import kotlin.test.assertNotNull
 import kotlin.test.assertNull
 
 class KsoupPluginTests {
@@ -92,6 +93,28 @@ class KsoupPluginTests {
     fun `test should throw on missing content type with getDocument`() {
         assertThrows<BadContentTypeException> {
             requestSampleDocument(ContentType.Text.Plain)
+        }
+    }
+
+    @Test
+    fun `test client should parse document on nullable reified type`() {
+        val client = mockClient.default()
+        assertDoesNotThrow {
+            val document: Document? = runBlocking {
+                client.get(constructUrl(ContentType.Text.Html)).body()
+            }
+            assertNotNull(document)
+        }
+    }
+
+    @Test
+    fun `test client should return null on missing content type and nullable reified type`() {
+        val client = mockClient.default()
+        assertDoesNotThrow {
+            val document: Document? = runBlocking {
+                client.get(constructUrl(ContentType.Text.Plain)).body()
+            }
+            assertNull(document)
         }
     }
 

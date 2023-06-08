@@ -4,12 +4,14 @@ import io.ktor.client.*
 import io.ktor.client.plugins.*
 import io.ktor.client.statement.*
 import io.ktor.http.*
+import io.ktor.http.content.*
 import io.ktor.util.*
 import io.ktor.utils.io.*
 import org.jsoup.nodes.Document
 import org.jsoup.parser.Parser
 import xyz.krylex.ksoup.Parsers
 import xyz.krylex.ksoup.document
+import xyz.krylex.ksoup.documentOrNull
 
 /**
  * A Ktor client plugin that provides support to
@@ -100,8 +102,17 @@ class Ksoup private constructor(private val config: Config) {
                     return@intercept
                 }
 
-                val document = context.response.document(plugin.config.parsers())
-                proceedWith(HttpResponseContainer(typeInfo, document))
+                val parsers = plugin.config.parsers()
+                val httpResponse = context.response
+
+                val kType = typeInfo.kotlinType
+                val body = if (kType != null && kType.isMarkedNullable) {
+                    httpResponse.documentOrNull(parsers) ?: NullBody
+                } else {
+                    httpResponse.document(parsers)
+                }
+
+                proceedWith(HttpResponseContainer(typeInfo, body))
             }
         }
     }
