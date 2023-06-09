@@ -10,7 +10,6 @@ version = "1.1.0"
 
 repositories {
     mavenCentral()
-    maven { url = uri("https://jitpack.io") }
 }
 
 dependencies {
@@ -38,6 +37,9 @@ java {
 
 publishing {
     repositories {
+        maven {
+            url = uri("https://jitpack.io")
+        }
         maven {
             name = "krylexReleases"
             url = uri("https://repository.krylex.xyz/releases")
