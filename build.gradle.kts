@@ -10,6 +10,7 @@ version = "1.1.1"
 
 repositories {
     mavenCentral()
+    maven("https://jitpack.io")
 }
 
 dependencies {
@@ -37,7 +38,6 @@ java {
 
 publishing {
     repositories {
-        maven("https://jitpack.io")
         maven("https://repository.krylex.xyz/releases") {
             name = "krylexReleases"
             credentials {
