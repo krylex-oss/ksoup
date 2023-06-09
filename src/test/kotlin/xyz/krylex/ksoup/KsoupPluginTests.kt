@@ -60,7 +60,7 @@ class KsoupPluginTests {
     ) {
         val client = mockClient.default()
         val document = runBlocking {
-            client.getDocument(constructUrl(contentType))
+            client.document(constructUrl(contentType))
         }
         block(document)
     }
@@ -90,7 +90,7 @@ class KsoupPluginTests {
     }
 
     @Test
-    fun `test getDocument should throw exception on missing content type`() {
+    fun `test document should throw exception on missing content type`() {
         assertThrows<BadContentTypeException> {
             requestSampleDocument(ContentType.Text.Plain)
         }
@@ -119,11 +119,11 @@ class KsoupPluginTests {
     }
 
     @Test
-    fun `test getDocumentOrNull should return null on missing content type`() {
+    fun `test documentOrNull should return null on missing content type`() {
         val client = mockClient.default()
         assertDoesNotThrow {
             runBlocking {
-                assertNull(client.getDocumentOrNull(constructUrl(ContentType.Text.Plain)))
+                assertNull(client.documentOrNull(constructUrl(ContentType.Text.Plain)))
             }
         }
     }
