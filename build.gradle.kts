@@ -10,7 +10,6 @@ version = "1.1.0"
 
 repositories {
     mavenCentral()
-    maven { url = uri("https://jitpack.io") }
 }
 
 dependencies {
@@ -38,9 +37,9 @@ java {
 
 publishing {
     repositories {
-        maven {
+        maven("https://jitpack.io")
+        maven("https://repository.krylex.xyz/releases") {
             name = "krylexReleases"
-            url = uri("https://repository.krylex.xyz/releases")
             credentials {
                 username = System.getenv("KRYLEX_REPOSITORY_USERNAME")
                 password = System.getenv("KRYLEX_REPOSITORY_PASSWORD")
