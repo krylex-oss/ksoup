@@ -66,7 +66,7 @@ suspend fun HttpResponse.document(parsers: Parsers = emptyMap()): Document =
  *
  * @return parsed document or null
  */
-suspend fun HttpClient.getDocumentOrNull(
+suspend fun HttpClient.documentOrNull(
     url: Url,
     parsers: Parsers = mapOf(),
     requestBuilder: HttpRequestBuilder.() -> Unit = {}
@@ -88,7 +88,7 @@ suspend fun HttpClient.getDocumentOrNull(
  * @throws BadContentTypeException if the content type of the response
  * does not match any of the registered parsers.
  */
-suspend fun HttpClient.getDocument(
+suspend fun HttpClient.document(
     url: Url,
     parsers: Parsers = emptyMap(),
     requestBuilder: HttpRequestBuilder.() -> Unit = {}
