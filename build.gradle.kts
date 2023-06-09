@@ -37,12 +37,9 @@ java {
 
 publishing {
     repositories {
-        maven {
-            url = uri("https://jitpack.io")
-        }
-        maven {
+        maven("https://jitpack.io")
+        maven("https://repository.krylex.xyz/releases") {
             name = "krylexReleases"
-            url = uri("https://repository.krylex.xyz/releases")
             credentials {
                 username = System.getenv("KRYLEX_REPOSITORY_USERNAME")
                 password = System.getenv("KRYLEX_REPOSITORY_PASSWORD")
