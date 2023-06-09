@@ -59,20 +59,41 @@ HttpClient(CIO) {
 ```
 
 ### Document parsing
-Warning! If the content type of the response does not match any of the registered parsers, it throws a ```BadContentTypeException```.
+If the content type of the response does not match any of the registered parsers, it **throws** a ```BadContentTypeException```:
 ```kotlin
 val document: Document = client.get(url).body()
 ```
-or via extension
-```kotlin
-val document = client.getDocument(url)
-```
 
 ### Document parsing (nullable variant)
-If the content type of the response does not match any of the registered parsers, it returns null.
+If the content type of the response does not match any of the registered parsers, it **returns null**:
 ```kotlin
-val document: Document? = client.getDocumentOrNull(url)
+val document: Document? = client.get(url).body()
 ```
+
+### Document parsing (WITHOUT plugin)
+You can use extension methods without installing Ksoup plugin on Ktor http client:
+```kotlin
+val document = client.document(url)
+val documentNullable = client.documentOrNull(url)
+```
+
+You can use additional parsers for content types:
+```kotlin
+val customParsers = mapOf(ContentType.Text.Plain to Parser.htmlParser())
+
+val document = client.document(url, customParsers)
+val documentNullable = client.documentOrNull(url, customParsers)
+```
+
+Also, you can work with **HttpResponse**:
+```kotlin
+val response: HttResponse = client.get(url)
+
+val document = response.document()
+val documentNullable = response.documentOrNull()
+```
+
+<!-- More information in documentation: url -->
 
 ## TODO
 
