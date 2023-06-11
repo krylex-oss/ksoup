@@ -10,13 +10,11 @@ import io.ktor.utils.io.jvm.javaio.*
 import kotlinx.coroutines.runBlocking
 import org.jsoup.nodes.Document
 import org.jsoup.parser.Parser
+import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertDoesNotThrow
 import org.junit.jupiter.api.assertThrows
 import xyz.krylex.ksoup.exception.BadContentTypeException
-import kotlin.test.assertEquals
-import kotlin.test.assertNotNull
-import kotlin.test.assertNull
 
 class KsoupPluginTests {
     private fun resourceAsByteChannel(resource: String): ByteReadChannel =
