@@ -15,10 +15,9 @@ repositories {
 
 dependencies {
     api(libs.jsoup)
-    implementation(libs.bundles.ktor)
-    implementation(libs.logback)
+    implementation(libs.ktor.client.core)
 
-    testImplementation(libs.bundles.ktor.tests)
+    testImplementation(libs.ktor.client.mock)
     testImplementation(libs.jupiter)
 }
 
