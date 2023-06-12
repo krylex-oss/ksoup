@@ -1,0 +1,36 @@
+name: Deploy dokka
+
+on:
+  push:
+    tags:
+      - '**'
+  workflow_dispatch:
+
+jobs:
+  deploy-dokka:
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout
+        uses: actions/chekout@v3
+
+      - name: Setup JDK
+        uses: actions/setup-java@v3
+        with:
+          distribution: zulu
+          java-version: 17
+          cache: gradle
+
+      - name: Build Dokka html
+        uses: gradle/gradle-build-action@v2
+        with:
+          arguments: dokkaHtml
+
+      - name: Deploy to Github Pages
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          folder: build/dokka/html
+          clean: true

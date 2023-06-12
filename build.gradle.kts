@@ -2,6 +2,7 @@ import org.gradle.api.tasks.testing.logging.TestLogEvent
 
 plugins {
     alias(libs.plugins.kotlin)
+    alias(libs.plugins.dokka)
     `maven-publish`
 }
 
