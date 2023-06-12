@@ -1,0 +1,25 @@
+$dokka.format:html-v1
+$dokka.linkExtension:html
+$dokka.location:xyz.krylex.ksoup.exception////PointingToDeclaration/ksoup/xyz.krylex.ksoup.exception/index.html
+$dokka.location:xyz.krylex.ksoup.exception/BadContentTypeException///PointingToDeclaration/ksoup/xyz.krylex.ksoup.exception/-bad-content-type-exception/index.html
+$dokka.location:xyz.krylex.ksoup.plugin////PointingToDeclaration/ksoup/xyz.krylex.ksoup.plugin/index.html
+$dokka.location:xyz.krylex.ksoup.plugin/Ksoup.Config///PointingToDeclaration/ksoup/xyz.krylex.ksoup.plugin/-ksoup/-config/index.html
+$dokka.location:xyz.krylex.ksoup.plugin/Ksoup.Config/Config/#/PointingToDeclaration/ksoup/xyz.krylex.ksoup.plugin/-ksoup/-config/-config.html
+$dokka.location:xyz.krylex.ksoup.plugin/Ksoup.Config/parser/#io.ktor.http.ContentType#kotlin.Function0[org.jsoup.parser.Parser]/PointingToDeclaration/ksoup/xyz.krylex.ksoup.plugin/-ksoup/-config/parser.html
+$dokka.location:xyz.krylex.ksoup.plugin/Ksoup.Config/parser/#io.ktor.http.ContentType#org.jsoup.parser.Parser/PointingToDeclaration/ksoup/xyz.krylex.ksoup.plugin/-ksoup/-config/parser.html
+$dokka.location:xyz.krylex.ksoup.plugin/Ksoup.Config/parsers/#/PointingToDeclaration/ksoup/xyz.krylex.ksoup.plugin/-ksoup/-config/parsers.html
+$dokka.location:xyz.krylex.ksoup.plugin/Ksoup.KsoupPlugin///PointingToDeclaration/ksoup/xyz.krylex.ksoup.plugin/-ksoup/-ksoup-plugin/index.html
+$dokka.location:xyz.krylex.ksoup.plugin/Ksoup.KsoupPlugin/install/#xyz.krylex.ksoup.plugin.Ksoup#io.ktor.client.HttpClient/PointingToDeclaration/ksoup/xyz.krylex.ksoup.plugin/-ksoup/-ksoup-plugin/install.html
+$dokka.location:xyz.krylex.ksoup.plugin/Ksoup.KsoupPlugin/key/#/PointingToDeclaration/ksoup/xyz.krylex.ksoup.plugin/-ksoup/-ksoup-plugin/key.html
+$dokka.location:xyz.krylex.ksoup.plugin/Ksoup.KsoupPlugin/prepare/#kotlin.Function1[xyz.krylex.ksoup.plugin.Ksoup.Config,kotlin.Unit]/PointingToDeclaration/ksoup/xyz.krylex.ksoup.plugin/-ksoup/-ksoup-plugin/prepare.html
+$dokka.location:xyz.krylex.ksoup.plugin/Ksoup///PointingToDeclaration/ksoup/xyz.krylex.ksoup.plugin/-ksoup/index.html
+$dokka.location:xyz.krylex.ksoup////PointingToDeclaration/ksoup/xyz.krylex.ksoup/index.html
+$dokka.location:xyz.krylex.ksoup//document/io.ktor.client.HttpClient#io.ktor.http.Url#kotlin.collections.Map[io.ktor.http.ContentType,org.jsoup.parser.Parser]#kotlin.Function1[io.ktor.client.request.HttpRequestBuilder,kotlin.Unit]/PointingToDeclaration/ksoup/xyz.krylex.ksoup/document.html
+$dokka.location:xyz.krylex.ksoup//document/io.ktor.client.statement.HttpResponse#kotlin.collections.Map[io.ktor.http.ContentType,org.jsoup.parser.Parser]/PointingToDeclaration/ksoup/xyz.krylex.ksoup/document.html
+$dokka.location:xyz.krylex.ksoup//documentOrNull/io.ktor.client.HttpClient#io.ktor.http.Url#kotlin.collections.Map[io.ktor.http.ContentType,org.jsoup.parser.Parser]#kotlin.Function1[io.ktor.client.request.HttpRequestBuilder,kotlin.Unit]/PointingToDeclaration/ksoup/xyz.krylex.ksoup/document-or-null.html
+$dokka.location:xyz.krylex.ksoup//documentOrNull/io.ktor.client.statement.HttpResponse#kotlin.collections.Map[io.ktor.http.ContentType,org.jsoup.parser.Parser]/PointingToDeclaration/ksoup/xyz.krylex.ksoup/document-or-null.html
+$dokka.location:xyz.krylex.ksoup//ksoup/io.ktor.client.HttpClientConfig[*]#kotlin.Function1[xyz.krylex.ksoup.plugin.Ksoup.Config,kotlin.Unit]/PointingToDeclaration/ksoup/xyz.krylex.ksoup/ksoup.html
+xyz.krylex.ksoup
+xyz.krylex.ksoup.exception
+xyz.krylex.ksoup.plugin
+
