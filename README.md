@@ -97,5 +97,5 @@ val documentNullable = response.documentOrNull()
 
 ## TODO
 
-- [ ] Documentation generation with Dokka
-- [ ] Documentation deploying to GitHub Pages
+- [ ] Fix test workflow runs on any commit
+- [ ] Reconfigure release changelog autogeneration
